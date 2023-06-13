@@ -1,0 +1,86 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: 'Quicksand';
+    /* background: linear-gradient(0deg, #fef08a, #a3e635, #4ade80, #2dd4bf); */
+    background: linear-gradient(180deg, #6b21a8, #4338ca);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.bold {
+    font-weight: 700;
+}
+input {
+    font-family: 'Quicksand';
+    font-size: 20px;
+}
+label {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 4px
+}
+.title{
+    color: #f9fafb;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+svg {
+    width: 100px;
+}
+form{
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 400px;
+}
+input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    color: #0a0a0a;
+    outline: 2px solid #a955f700;
+    transition: outline 150ms ease-in-out;
+}
+input[type="text"]:focus {
+    outline: 2px solid #a955f7cf;
+}
+input[type="submit"] {
+    background-color: #a855f7;
+    border: 0;
+    outline: none;
+    padding: 5px;
+    border-radius: 2px;
+    color: #f9fafb;
+    transition: background-color 150ms ease-in-out;
+}
+input[type="submit"]:hover {
+    outline: none;
+    background-color: #9333ea;
+    cursor: pointer;
+}
+.dropdown {
+    display: block;
+}
+.entry {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.result {
+    position: absolute;
+    z-index: 1;
+}
