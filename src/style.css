@@ -88,10 +88,45 @@ input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     width: 100%;
     font-size: 25px;
+    opacity: 0;
+    text-align: center;
+    transition: opacity 300ms ease-in-out;
+    padding: 0;
 }
 .country {
     font-weight: 500;
 }
+.grid {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: auto;
+    justify-items: center;
+}
+.temp{
+    font-size: 3em;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    justify-self: end;
+}
+.condition{
+    font-size: 0.8em;
+    justify-self: start;
+} 
+.no-location {
+    width: 100%;
+    position: absolute;
+    color: #f9fafb;
+    text-align: center;
+    margin-top: 50px;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+    z-index: 1;
+}
+.visible {
+    opacity: 1;
+}
+

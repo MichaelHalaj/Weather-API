@@ -3,11 +3,15 @@ import './style.css';
 const cityNode = document.querySelector('.city');
 const countryNode = document.querySelector('.country');
 const tempNode = document.querySelector('.temp');
+const resultNode = document.querySelector('.result');
+const conditionNode = document.querySelector('.condition');
+const failedSearchNode = document.querySelector('.no-location');
 
 function updatePlace(data) {
   cityNode.textContent = data.name;
   countryNode.textContent = `, ${data.country}`;
   tempNode.innerHTML = `${data.temp_f}&degF`;
+  conditionNode.textContent = data.condition;
 }
 function resolve(data) {
   const curr = data.current;
@@ -15,6 +19,7 @@ function resolve(data) {
   const usefulData = {
     name: loc.name,
     country: loc.country,
+    condition: curr.condition.text,
     region: loc.region,
     localtime: loc.localtime,
     temp_f: curr.temp_f,
@@ -26,28 +31,21 @@ function resolve(data) {
   return usefulData;
 }
 function handleError(error) {
-  console.log(`There was an error:${error}`);
+  console.log(error.message === '400');
+  if (error.message === '400') {
+    failedSearchNode.classList.add('visible');
+  }
+  console.log(error.message);
 }
 
 async function getWeather(searchValue) {
-  /* fetch(`http://api.weatherapi.com/v1/current.json?key=a2ab483a5ab34008a59185749231106&q=${searchValue}&aqi=no`, { mode: 'cors' })
-    .then((response) => response.json())
-    .then((response) => {
-      if (response) {
-        console.log(response);
-      } else {
-        throw new Error('problem');
-      }
-    })
-    .catch(handleError);
-    */
   const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=a2ab483a5ab34008a59185749231106&q=${searchValue}&aqi=no`, { mode: 'cors' });
   const weatherData = await response.json();
   if (response.status === 200) {
-    // console.log(weatherData);
+    console.log(weatherData);
     return weatherData;
   } if (response.status === 400) {
-    throw new Error('empty');
+    throw new Error(400);
   }
   throw new Error(response.status);
 }
@@ -55,8 +53,15 @@ async function getWeather(searchValue) {
 const weatherForm = document.getElementById('weather-form');
 weatherForm.addEventListener('submit', (event) => {
   event.preventDefault();
+  resultNode.classList.remove('visible');
   const searchValue = event.target.search.value;
   const data = getWeather(searchValue);
-  data.then(resolve).catch(handleError);
+  data.then(resolve)
+    .then(() => {
+      resultNode.classList.add('visible');
+      failedSearchNode.classList.remove('visible');
+    })
+    .catch(handleError);
+  weatherForm.reset();
   //console.log(weatherData);
 });
