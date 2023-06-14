@@ -39,7 +39,7 @@ async function getWeather(searchValue) {
   const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=a2ab483a5ab34008a59185749231106&q=${searchValue}&aqi=no`, { mode: 'cors' });
   const weatherData = await response.json();
   if (response.status === 200) {
-    console.log(weatherData);
+    // console.log(weatherData);
     return weatherData;
   } if (response.status === 400) {
     throw new Error(400);
@@ -60,5 +60,5 @@ weatherForm.addEventListener('submit', (event) => {
     })
     .catch(handleError);
   weatherForm.reset();
-  //console.log(weatherData);
+  // console.log(weatherData);
 });
