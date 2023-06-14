@@ -26,16 +26,13 @@ function resolve(data) {
     temp_c: curr.temp_c,
   };
   updatePlace(usefulData);
-  console.log(usefulData.name);
   // console.log(usefulData);
   return usefulData;
 }
 function handleError(error) {
-  console.log(error.message === '400');
   if (error.message === '400') {
     failedSearchNode.classList.add('visible');
   }
-  console.log(error.message);
 }
 
 async function getWeather(searchValue) {
