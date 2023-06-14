@@ -83,4 +83,15 @@ input[type="submit"]:hover {
 .result {
     position: absolute;
     z-index: 1;
+    margin-top: 50px;
+    color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 25px;
+}
+.country {
+    font-weight: 500;
 }

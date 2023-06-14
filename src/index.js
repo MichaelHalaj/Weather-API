@@ -1,9 +1,13 @@
 import './style.css';
 
-const nameNode = document.querySelector('.city');
+const cityNode = document.querySelector('.city');
+const countryNode = document.querySelector('.country');
+const tempNode = document.querySelector('.temp');
 
 function updatePlace(data) {
-  nameNode.textContent = data.name;  
+  cityNode.textContent = data.name;
+  countryNode.textContent = `, ${data.country}`;
+  tempNode.innerHTML = `${data.temp_f}&degF`;
 }
 function resolve(data) {
   const curr = data.current;
